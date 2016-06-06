@@ -1,0 +1,23 @@
+{
+  "name": "angular-skeleton",
+  "authors": [
+    "Gilson Terra <gilsonterra@gmail.com>"
+  ],
+  "description": "angular skeleton",
+  "main": "",
+  "keywords": [
+    "angular",
+    "gulp",
+    "bower"
+  ],
+  "license": "MIT",
+  "homepage": "gilsonterra.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

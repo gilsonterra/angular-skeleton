@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col s4">
+            <div class="row white">
+                <form class="col s12" novalidate name='formArea'>
+                    <div class="row blue white-text">
+                        <div class="col s12">
+                            <h5>Cadastro de área</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="descricao" ng-model="area.descricao" type="text" required>
+                            <label for="descricao">Descrição</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <label for="descricao">Cor de fundo</label>
+                            <colorpicker ng-model="area.cor" required></colorpicker>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <button ng-class="{disabled:formArea.$invalid}" ng-disabled="formArea.$invalid" class="waves-effect waves-light btn blue" ng-click="persistir()" style="width:100%">Adicionar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col s8">
+            <h5>Áreas cadastradas</h5>
+            <div ng-repeat="areaCadastrada in areasCadastradas" style='margin:5px;' class="chip {{areaCadastrada.cor}}">
+                {{areaCadastrada.descricao}}
+                <i class="material-icons">close</i>
+            </div>
+        </div>
+    </div>
+</div>

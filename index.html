@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Angular SKELETON</title>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css">
+        <link rel="stylesheet" href="bower_components/ngGTColorPicker/ng-gt-colorpicker.css"></link>
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+
+    <body class="grey lighten-4" ngd-class="{'grey lighten-4': location.path() != '/login', 'blue': location.path() == '/login'}">
+
+        <navigation ng-if="location.path() != '/login'"></navigation>
+        <main class="row" style="margin-top:35px;">
+            <div class="col s12">
+                <div ng-view></div>
+            </div>
+        </main>
+
+        <script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+        <script src="bower_components/Materialize/dist/js/materialize.min.js"></script>
+        <script src="bower_components/angular/angular.min.js" charset="utf-8"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.min.js" charset="utf-8"></script>
+        <script src="bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
+        <script src="bower_components/ngGTColorPicker/ng-gt-colorpicker.js" charset="utf-8"></script>
+        <script src="js/app.js" charset="utf-8"></script>
+
+        <script src="js/configs/routeConfig.js" charset="utf-8"></script>
+
+        <script src="js/controllers/loginController.js" charset="utf-8"></script>
+        <script src="js/controllers/logoutController.js" charset="utf-8"></script>
+        <script src="js/controllers/homeController.js" charset="utf-8"></script>
+        <script src="js/controllers/sobreController.js" charset="utf-8"></script>
+        <script src="js/controllers/areaController.js" charset="utf-8"></script>
+
+        <script src="js/directives/navigationDirective.js" charset="utf-8"></script>
+    </body>
+
+</html>
