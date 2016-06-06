@@ -22,9 +22,16 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('scripts', function() {
-    return gulp.src(['bower_components/**/dist/*.js', 'js/**/*.js'])
+    return gulp.src([
+        'bower_components/jquery/dist/jquery.min.js',
+        'bower_components/Materialize/dist/js/materialize.min.js',
+        'bower_components/angular/angular.min.js',
+        'bower_components/angular-cookies/angular-cookies.min.js',
+        'bower_components/angular-route/angular-route.min.js',
+        'bower_components/ngGTColorPicker/ng-gt-colorpicker.js',
+        'js/**/*.js']),
         .pipe(concat('all.min.js'))
-         .pipe(uglify({ mangle: false })) // FOR ANGULAR
+        .pipe(uglify({ mangle: false })) // FOR ANGULAR
         .pipe(gulp.dest('dist/js'));
 });
 
@@ -38,7 +45,8 @@ gulp.task('htmlmin', function() {
 
 gulp.task('cssmin', function() {
     return gulp.src([
-            'lib/**/*.css',
+            'bower_components/Materialize/dist/css/materialize.min.css',
+            'bower_components/ngGTColorPicker/ng-gt-colorpicker.css',
             'css/*.css'
         ])
         .pipe(concat('styles.css'))
@@ -47,7 +55,7 @@ gulp.task('cssmin', function() {
 });
 
 gulp.task('fonts', function() {
-    return gulp.src('lib/materialize/fonts/**')
+    return gulp.src('bower_components/Materialize/dist/fonts/**')
         .pipe(gulp.dest('dist/fonts'));
 });
 
