@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -14,25 +13,21 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 
-gulp.task('jshint', function() {
-    // se tiver return vira assincrono
-    return gulp.src('js/**/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
-});
-
 gulp.task('scripts', function() {
-    return gulp.src([
-        'bower_components/jquery/dist/jquery.min.js',
-        'bower_components/Materialize/dist/js/materialize.min.js',
-        'bower_components/angular/angular.min.js',
-        'bower_components/angular-cookies/angular-cookies.min.js',
-        'bower_components/angular-route/angular-route.min.js',
-        'bower_components/ngGTColorPicker/ng-gt-colorpicker.js',
-        'js/**/*.js']),
-        .pipe(concat('all.min.js'))
-        .pipe(uglify({ mangle: false })) // FOR ANGULAR
-        .pipe(gulp.dest('dist/js'));
+    return es.merge([
+        gulp.src(['bower_components/jquery/dist/jquery.min.js',
+            'bower_components/Materialize/dist/js/materialize.min.js',
+            'bower_components/angular/angular.min.js',
+            'bower_components/angular-cookies/angular-cookies.min.js',
+            'bower_components/angular-route/angular-route.min.js',
+            'bower_components/ngGTColorPicker/ng-gt-colorpicker.js'
+        ]),
+        gulp.src(['js/**/*.js']).pipe(concat('scripts.js')).pipe(uglify({
+            mangle: false
+        }))
+    ]).pipe(concat('all.min.js'))
+
+    .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('htmlmin', function() {
@@ -44,14 +39,16 @@ gulp.task('htmlmin', function() {
 });
 
 gulp.task('cssmin', function() {
-    return gulp.src([
-            'bower_components/Materialize/dist/css/materialize.min.css',
-            'bower_components/ngGTColorPicker/ng-gt-colorpicker.css',
-            'css/*.css'
+    return es.merge([
+            gulp.src([
+                'bower_components/Materialize/dist/css/materialize.min.css',
+                'bower_components/ngGTColorPicker/ng-gt-colorpicker.css',
+            ]),
+            gulp.src(['css/*.css']).pipe(cleanCSS())
         ])
         .pipe(concat('styles.css'))
-        .pipe(cleanCSS())
-        .pipe(gulp.dest('dist/css'));
+
+    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('fonts', function() {
@@ -66,5 +63,5 @@ gulp.task('copy', function() {
 });
 
 gulp.task('default', function(callback) {
-    return runSequence('clean', ['jshint', 'scripts', 'htmlmin', 'cssmin', 'fonts', 'copy'], callback);
+    return runSequence('clean', ['htmlmin', 'scripts', 'cssmin', 'fonts', 'copy'], callback);
 });

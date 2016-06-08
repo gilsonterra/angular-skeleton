@@ -11,8 +11,7 @@
 
     </head>
 
-    <body class="grey lighten-4" ngd-class="{'grey lighten-4': location.path() != '/login', 'blue': location.path() == '/login'}">
-
+    <body ng-class="{'grey lighten-4': location.path() != '/login', 'blue': location.path() == '/login'}">
         <navigation ng-if="location.path() != '/login'"></navigation>
         <main class="row" style="margin-top:35px;">
             <div class="col s12">
