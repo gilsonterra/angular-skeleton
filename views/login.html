@@ -1,27 +1,13 @@
-<div class="container">
-    <br />
-    <div class="row ">
-        <div class="col s3">&nbsp;</div>
-        <form class="col s6 white z-depth-3">
-            <h4>Login</h4>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" type="email">
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" type="password">
-                    <label for="password">Password</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <a class="waves-effect blue waves-light btn" style="width:100%" ng-click="login()">Entrar</a>
-                </div>
-            </div>
-        </form>
-        <div class="col s3">&nbsp;</div>
-    </div>
+<div layout="row" layout-align="center center">
+  <div>
+      <md-input-container class="md-block" flex-gt-sm>
+         <label>Email</label>
+         <input type="text" ng-model="user.email">
+       </md-input-container>
+       <md-input-container class="md-block" flex-gt-sm>
+          <label>Senha</label>
+          <input type="password" ng-model="user.senha">
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click="login()">Entrar</md-button>
+  </div>
 </div>

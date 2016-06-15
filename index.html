@@ -1,4 +1,49 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
+</head>
+
+<body ng-app="app">
+    <navigation ng-if="location.path() != '/login'"></navigation>
+    <div ui-view></div>
+
+
+    <!-- SCRIPTS -->
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/node_modules/angular-cookies/angular-cookies.min.js"></script>
+    <script src="/node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="/node_modules/angular-material/angular-material.min.js"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+
+    <script src="js/configs/routeConfig.js" charset="utf-8"></script>
+
+    <script src="js/controllers/loginController.js" charset="utf-8"></script>
+    <script src="js/controllers/logoutController.js" charset="utf-8"></script>
+    <script src="js/controllers/homeController.js" charset="utf-8"></script>
+    <script src="js/controllers/sobreController.js" charset="utf-8"></script>
+    <script src="js/controllers/areaController.js" charset="utf-8"></script>
+
+    <script src="js/directives/navigationDirective.js" charset="utf-8"></script>
+
+    <script src="js/services/sobreService.js" charset="utf-8"></script>
+
+    <script src="js/configs/routeConfig.js" charset="utf-8"></script>
+    <script src="js/controllers/homeController.js" charset="utf-8"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html ng-app="app">
 
     <head>
@@ -8,7 +53,6 @@
         <link rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css">
         <link rel="stylesheet" href="bower_components/ngGTColorPicker/ng-gt-colorpicker.css"></link>
         <link rel="stylesheet" href="css/style.css">
-
     </head>
 
     <body ng-class="{'grey lighten-4': location.path() != '/login', 'blue': location.path() == '/login'}">
@@ -25,6 +69,7 @@
         <script src="bower_components/angular-cookies/angular-cookies.min.js" charset="utf-8"></script>
         <script src="bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
         <script src="bower_components/ngGTColorPicker/ng-gt-colorpicker.js" charset="utf-8"></script>
+        <script src="bower_components/angular-materialize/src/angular-materialize.js" charset="utf-8"></script>
         <script src="js/app.js" charset="utf-8"></script>
 
         <script src="js/configs/routeConfig.js" charset="utf-8"></script>
@@ -36,6 +81,8 @@
         <script src="js/controllers/areaController.js" charset="utf-8"></script>
 
         <script src="js/directives/navigationDirective.js" charset="utf-8"></script>
+
+        <script src="js/services/sobreService.js" charset="utf-8"></script>
     </body>
 
-</html>
+</html> -->

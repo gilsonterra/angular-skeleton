@@ -1,26 +1,25 @@
-app.directive("navigation", function($location) {
+app.directive("navigation", function($state) {
     return {
         restrict: "E",
         templateUrl: 'views/navigation.html',
         link: function(scope, element) {
-            scope.states = {};
-            scope.states.urlActive = $location.path();
-
             scope.menu = [{
                 nome: 'Home',
-                url: '/home'
+                url: 'app.home'
             }, {
                 nome: 'Sobre',
-                url: '/sobre'
+                url: 'app.sobre'
             }, {
                 nome: 'Área',
-                url: '/area'
+                url: 'app.area'
             }, {
                 nome: 'Logout',
                 url: '/logout',
             }];
 
-            $(".button-collapse").sideNav();
+            scope.goTo = function(url){
+                $state.go(url);
+            };
         }
     };
 });
