@@ -14,7 +14,6 @@ app.constant('API', {
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     $urlRouterProvider.otherwise("/login");
-
     $stateProvider.state('app', {
         url: '/app',
         templateUrl: 'views/main.html'
@@ -34,7 +33,6 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         url: '/logout',
         controller: 'LogoutController'
     });
-
 });
 
 app.run(function($rootScope, $location, $cookies) {

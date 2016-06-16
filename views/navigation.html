@@ -1,33 +1,20 @@
-<md-sidenav flex md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop md-whiteframe="4">
-    <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Menu</h1>
-    </md-toolbar>
-    <md-content layout-padding>
-        <md-list ng-cloak>
-            <md-list-item ng-repeat="m in menu" ng-click="goTo(m.url)">
-                <p>{{m.nome}}</p>
-            </md-list-item>
-        </md-list>
-    </md-content>
-</md-sidenav>
-<!-- <nav>
-    <div class="nav-wrapper blue">
-        <a href="#!" class="brand-logo">&nbsp;Sagaz</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse">
-            <i class="material-icons">menu</i>
-        </a>
-        <ul class="right hide-on-med-and-down">
-            <li ng-repeat="m in menu" ng-class="{active:states.urlActive ==  m.url}">
-                <a href="#{{ m.url }}" ng-click="states.urlActive = m.url">
-                    {{m.nome}}
-                    {{urlActive}}
-                </a>
-            </li>
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-            <li ng-repeat="m in menu">
-                <a href="#/{{ m.url }}">{{ m.nome }}</a>
-            </li>
-        </ul>
-    </div>
-</nav> -->
+<div>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop md-whiteframe="2">
+        <md-toolbar>
+            <md-toolbar class="md-indigo md-tall">
+                <div class="md-toolbar-tools">
+                    <h2>
+                      <span>MENU</span>
+                    </h2>
+                </div>
+            </md-toolbar>
+        </md-toolbar>
+        <md-content>
+            <md-list>
+                <md-list-item ng-repeat="m in menu" ng-click="goTo(m.url)">
+                    <p>{{m.nome}}</p>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-sidenav>
+</div>

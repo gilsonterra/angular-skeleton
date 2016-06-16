@@ -1,2 +1,10 @@
-MAIN
-<div ui-view></div>
+<div layout="column">
+    <section layout="row" flex>
+        <navigation></navigation>
+        <md-content flex>
+            <div layout="column" layout-fill layout-align="top left">
+                <div ui-view></div>
+            </div>
+        </md-content>
+    </section>
+</div>

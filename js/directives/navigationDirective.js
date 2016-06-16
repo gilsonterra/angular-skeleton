@@ -14,7 +14,7 @@ app.directive("navigation", function($state) {
                 url: 'app.area'
             }, {
                 nome: 'Logout',
-                url: '/logout',
+                url: 'logout',
             }];
 
             scope.goTo = function(url){
