@@ -2,37 +2,48 @@
  * APP init
  */
 var app = {};
+
 app = angular.module("app", [
     'ui.router',
     'ngCookies',
-    'ngMaterial'
+    'ngSanitize',
+    'ui.tinymce'
 ]);
 
 app.constant('API', {
-    url: 'http://slim3-skeleton.local'
+    url: 'http://localhost/SPA/api/public/'
 });
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     $urlRouterProvider.otherwise("/login");
     $stateProvider.state('app', {
-        url: '/app',
-        templateUrl: 'views/main.html'
-    }).state('app.home', {
-        url: '/home',
-        templateUrl: 'views/home.html',
-        controller: 'HomeController'
-    }).state('app.sobre', {
-        url: '/sobre',
-        templateUrl: 'views/sobre.html',
-        controller: 'SobreController'
-    }).state('login', {
-        url: '/login',
-        templateUrl: "views/login.html",
-        controller: 'LoginController'
-    }).state('logout', {
-        url: '/logout',
-        controller: 'LogoutController'
-    });
+            url: '/app',
+            templateUrl: 'views/main.html'
+        })
+        .state('app.projeto-list', {
+            url: '/projeto/listagem',
+            templateUrl: 'views/projeto/list.html',
+            controller: 'ProjetoListController'
+        })
+        .state('app.projeto-form', {
+            url: '/projeto/cadastro/:id',
+            templateUrl: 'views/projeto/form.html',
+            controller: 'ProjetoFormController'
+        })
+        .state('app.sobre', {
+            url: '/sobre',
+            templateUrl: 'views/sobre.html',
+            controller: 'SobreController'
+        })
+        .state('login', {
+            url: '/login',
+            templateUrl: "views/login.html",
+            controller: 'LoginController'
+        })
+        .state('logout', {
+            url: '/logout',
+            controller: 'LogoutController'
+        });
 });
 
 app.run(function($rootScope, $location, $cookies) {

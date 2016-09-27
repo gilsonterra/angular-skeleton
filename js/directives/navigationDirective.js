@@ -4,8 +4,8 @@ app.directive("navigation", function($state) {
         templateUrl: 'views/navigation.html',
         link: function(scope, element) {
             scope.menu = [{
-                nome: 'Home',
-                url: 'app.home'
+                nome: 'Projeto',
+                url: 'app.projeto-list'
             }, {
                 nome: 'Sobre',
                 url: 'app.sobre'

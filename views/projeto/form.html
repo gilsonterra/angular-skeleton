@@ -1,0 +1,53 @@
+<form name="formulario" novalidate>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="page-title">
+                <small class="pull-right">
+                    <a href="#/admin/projeto/listagem" class="btn btn-default btn-sm">
+                        Voltar
+                    </a>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        Salvar
+                    </button>
+                </small>
+                Cadastro de Projeto
+            </h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" class="form-control" maxlength="100" value="{ projeto.nome }" required/>
+                        <input type="hidden" name="id" value="{ projeto.id }">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="nome">Faturar por</label>
+                        <select class="form-control" name="faturar" value="{ projeto.faturar }">
+                            <option value="projeto">Projeto</option>
+                            <option value="hora">Hora</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="nome">Valor</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">R$</span>
+                            <input type="text" name="valor" mask="000.000.000.000.000,00" mask-reverse="true" class="form-control" required/>                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <textarea ui-tinymce="{trusted:true,debouncetime:5000,onblur:true}" ng-model="descricao"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
