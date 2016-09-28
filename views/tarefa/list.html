@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>TAREFAS</h3>
+    </div>
+    <div class="panel-body">
+        <div ng-if="tarefas.length <= 0">
+            <h3>Nenhuma tarefa cadastrada</h3>
+        </div>
+        <table ng-if="tarefas.length > 0" datatable dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-hover table-bordered">
+            <thead>
+                <tr class="active">
+                    <th>Projeto</th>
+                    <th>Tarefa</th>
+                    <th style="width: 50px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="t in tarefas">
+                    <td>{{ ::t.projeto.nome }}</td>
+                    <td>{{ ::t.descricao }}</td>
+                    <td>
+                        <a href="#/app/tarefa/cadastro/{{ ::t.projeto_id }}" class="btn btn-link">Alterar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -3,10 +3,10 @@
         <div class="panel-heading">
             <h4 class="page-title">
                 <small class="pull-right">
-                    <a href="#/admin/projeto/listagem" class="btn btn-default btn-sm">
+                    <a ui-sref='app.projeto-list' class="btn btn-default btn-sm">
                         Voltar
                     </a>
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button class="btn btn-primary btn-sm" ng-disabled="formulario.$invalid" ng-click="salvar(projeto)" >
                         Salvar
                     </button>
                 </small>
@@ -16,27 +16,30 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-8">
-                    <div class="form-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" name="nome" class="form-control" maxlength="100" value="{ projeto.nome }" required/>
-                        <input type="hidden" name="id" value="{ projeto.id }">
+                    <div class="form-group" ng-class="{ 'has-error': formulario.nome.$invalid && !formulario.nome.$pristine }">
+                        <label class="control-label" for="nome">Nome*</label>
+                        <input type="hidden" name="id" ng-model="projeto.id">
+                        <input type="text" name="nome" ng-model="projeto.nome" class="form-control" maxlength="100" ng-required="true" />
+                        <i class="help-block" ng-if="formulario.nome.$dirty && formulario.nome.$error.required">Nome é obrigatório</i>
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label for="nome">Faturar por</label>
-                        <select class="form-control" name="faturar" value="{ projeto.faturar }">
+                        <select class="form-control" name="faturar">
                             <option value="projeto">Projeto</option>
                             <option value="hora">Hora</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-2">
-                    <div class="form-group">
-                        <label for="nome">Valor</label>
+                    <div class="form-group" ng-class="{ 'has-error': formulario.valor.$invalid && !formulario.valor.$pristine }">
+                        <label class="control-label" for="valor">Valor*</label>
                         <div class="input-group">
                             <span class="input-group-addon">R$</span>
-                            <input type="text" name="valor" mask="000.000.000.000.000,00" mask-reverse="true" class="form-control" required/>                       </div>
+                            <input type="text" name="valor" ng-model="projeto.valor" mask="000.000.000.000.000,00" mask-reverse="true" class="form-control" ng-required="true"/>
+                        </div>
+                        <i class="help-block" ng-if="formulario.valor.$dirty && formulario.valor.$error.required">Valor é obrigatório</i>
                     </div>
                 </div>
             </div>
@@ -44,7 +47,7 @@
                 <div class="col-sm-12">
                     <div class="form-group">
                         <label for="descricao">Descrição</label>
-                        <textarea ui-tinymce="{trusted:true,debouncetime:5000,onblur:true}" ng-model="descricao"></textarea>
+                        <textarea class="form-control" ui-tinymce="{trusted:true,debouncetime:5000,onblur:true}" ng-model="projeto.descricao"></textarea>
                     </div>
                 </div>
             </div>

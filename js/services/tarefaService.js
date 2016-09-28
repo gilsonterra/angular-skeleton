@@ -1,5 +1,5 @@
-app.service("ProjetoService", function($http, API) {
-    var _baseUrl = API.url + "projeto/";
+app.service("TarefaService", function($http, API) {
+    var _baseUrl = API.url + "tarefa/";
 
     var _fetch = function() {
         return $http({

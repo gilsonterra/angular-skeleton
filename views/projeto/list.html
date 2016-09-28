@@ -1,23 +1,35 @@
-<div ng-if="projetos.length <= 0">
-    <h3>Nenhum projeto cadastrado</h3>
-</div>
-<div class="panel panel-default" ng-repeat="p in projetos" ng-if="projetos.length > 0">
+<div class="panel panel-default">
     <div class="panel-heading">
-        <h4 class="page-title">
-            <small class="pull-right">
-                <small class="label label-info" ng-if="p.faturar == 'hora'">FATURAR POR HORA</small>
-                <small class="label label-primary" ng-if="p.faturar == 'projeto'">FATURAR POR PROJETO</small>
-                <a href="#/app/projeto/cadastro/{{ p.id }}" class="btn btn-link">Alterar</a>
-            </small>
-
-            {{ p.nome }}
-        </h4>
+        <h3>PROJETOS</h3>
     </div>
     <div class="panel-body">
-        <div class="row">
-            <div class="col-sm-12">
-                <p ng-bind-html="p.descricao"></p>
-            </div>
+        <div ng-if="projetos.length <= 0">
+            <h3>Nenhum projeto cadastrado</h3>
         </div>
+        <table datatable dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-hover table-bordered" ng-if="projetos.length > 0">
+            <thead>
+                <tr class="active">
+                    <th>Nome</th>
+                    <th>Faturar</th>
+                    <th>Descrição</th>
+                    <th style="width: 50px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="p in projetos track by p.id">
+                    <td>{{ ::p.nome }}</td>
+                    <td>
+                        <small class="label label-info" ng-if="::p.faturar == 'hora'">FATURAR POR HORA</small>
+                        <small class="label label-primary" ng-if="::p.faturar == 'projeto'">FATURAR POR PROJETO</small>
+                    </td>
+                    <td>
+                        <p ng-bind-html="::p.descricao"></p>
+                    </td>
+                    <td>
+                        <a href="#/app/projeto/cadastro/{{ ::p.id }}" class="btn btn-link">Alterar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

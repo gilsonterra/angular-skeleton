@@ -2,7 +2,10 @@
 
 <div class="container">
     <div class="row">
-        <div class="cols-sm-12">
+        <div class="jumbotron" ng-show="loading">
+            <h5>Carregando, por favor aguarde...</h5>
+        </div>
+        <div class="cols-sm-12" ng-hide="loading">
             <div ui-view></div>
         </div>
     </div>

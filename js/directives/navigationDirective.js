@@ -4,20 +4,17 @@ app.directive("navigation", function($state) {
         templateUrl: 'views/navigation.html',
         link: function(scope, element) {
             scope.menu = [{
-                nome: 'Projeto',
+                nome: 'Projetos',
                 url: 'app.projeto-list'
             }, {
-                nome: 'Sobre',
-                url: 'app.sobre'
-            }, {
-                nome: 'Área',
-                url: 'app.area'
+                nome: 'Tarefas',
+                url: 'app.tarefa-list'
             }, {
                 nome: 'Logout',
                 url: 'logout',
             }];
 
-            scope.goTo = function(url){
+            scope.goTo = function(url) {
                 $state.go(url);
             };
         }
