@@ -30,6 +30,16 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             templateUrl: 'views/projeto/list.html',
             controller: 'ProjetoListController'
         })
+        .state('app.usuario-form', {
+            url: '/usuario/cadastro/:id',
+            templateUrl: 'views/usuario/form.html',
+            controller: 'UsuarioFormController'
+        })
+        .state('app.usuario-list', {
+            url: '/usuario/listagem',
+            templateUrl: 'views/usuario/list.html',
+            controller: 'UsuarioListController'
+        })
         .state('app.projeto-form', {
             url: '/projeto/cadastro/:id',
             templateUrl: 'views/projeto/form.html',
@@ -61,9 +71,14 @@ app.run(function($rootScope, $location, $cookies, DTDefaultOptions) {
     DTDefaultOptions.setLanguageSource('http://cdn.datatables.net/plug-ins/1.10.11/i18n/Portuguese-Brasil.json');
 
     $rootScope.location = $location;
-    $rootScope.$on("$routeChangeStart", function(event, next, current) {
-        if ($cookies.get('token') === undefined) {
-            $location.path("/login");
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+
+        if (toState.url != '/login' && ($cookies.get('token') == undefined || $cookies.get('token') == null) ) {
+            event.preventDefault();
+
+            $rootScope.$evalAsync(function() {
+               $location.path("/login");
+           });
         }
     });
 });

@@ -10,6 +10,9 @@ app.directive("navigation", function($state) {
                 nome: 'Tarefas',
                 url: 'app.tarefa-list'
             }, {
+                nome: 'Usuários',
+                url: 'app.usuario-list',
+            }, {
                 nome: 'Logout',
                 url: 'logout',
             }];

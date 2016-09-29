@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>USUÁRIOS</h3>
+    </div>
+    <div class="panel-body">
+        <div ng-if="usuarios.length <= 0">
+            <h3>Nenhum usuário cadastrado</h3>
+        </div>
+        <table datatable dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-hover table-bordered" ng-if="usuarios.length > 0">
+            <thead>
+                <tr class="active">
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th style="width: 50px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="u in usuarios track by u.id">
+                    <td>{{ ::u.nome }}</td>
+                    <td>{{ ::u.nome }}</td>
+                    <td>
+                        <a href="#/app/usuario/cadastro/{{ ::u.id }}" class="btn btn-link">Alterar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

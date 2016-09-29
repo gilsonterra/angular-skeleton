@@ -1,0 +1,44 @@
+<form name="formulario" novalidate>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="page-title">
+                <small class="pull-right">
+                    <a ui-sref='app.usuario-list' class="btn btn-default btn-sm">
+                        Voltar
+                    </a>
+                    <button class="btn btn-primary btn-sm" ng-disabled="formulario.$invalid" ng-click="salvar(usuario)" >
+                        Salvar
+                    </button>
+                </small>
+                Cadastro de Usuário
+            </h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group" ng-class="{ 'has-error': formulario.nome.$invalid && !formulario.nome.$pristine }">
+                        <label class="control-label" for="nome">Nome*</label>
+                        <input type="hidden" name="id" ng-model="usuario.id">
+                        <input type="text" name="nome" ng-model="usuario.nome" class="form-control" maxlength="100" ng-required="true" />
+                        <i class="help-block" ng-if="formulario.nome.$dirty && formulario.nome.$error.required">Nome é obrigatório.</i>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group" ng-class="{ 'has-error': formulario.email.$invalid && !formulario.email.$pristine }">
+                        <label for="email">E-mail*</label>
+                        <input type="email" name="email" ng-model="usuario.email" class="form-control" maxlength="100" ng-required="true" />
+                        <i class="help-block" ng-if="formulario.email.$dirty && formulario.email.$error.required">Email é obrigatório.</i>
+                        <i class="help-block" ng-if="formulario.email.$dirty && formulario.email.$error.email">Por favor digite um e-mail válido.</i>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group" ng-class="{ 'has-error': formulario.senha.$invalid && !formulario.senha.$pristine }">
+                        <label for="senha">Senha*</label>
+                        <input type="password" name="senha" ng-model="usuario.senha" class="form-control" maxlength="100" ng-required="true" />
+                        <i class="help-block" ng-if="formulario.senha.$dirty && formulario.senha.$error.required">Senha é obrigatório.</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
