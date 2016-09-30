@@ -1,25 +1,13 @@
-app.directive("navigation", function($state) {
+app.directive("navigation", function($state, $cookies, MenuService) {
     return {
         restrict: "E",
         templateUrl: 'views/navigation.html',
         link: function(scope, element) {
-            scope.menu = [{
-                nome: 'Projetos',
-                url: 'app.projeto-list'
-            }, {
-                nome: 'Tarefas',
-                url: 'app.tarefa-list'
-            }, {
-                nome: 'Usuários',
-                url: 'app.usuario-list',
-            }, {
-                nome: 'Logout',
-                url: 'logout',
-            }];
+            MenuService.fetch().success(function(json) {
+                scope.menu = json;
+            });
 
-            scope.goTo = function(url) {
-                $state.go(url);
-            };
+            scope.usuario = JSON.parse($cookies.get('usuario'));
         }
     };
 });

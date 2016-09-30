@@ -15,10 +15,14 @@ app.constant('API', {
     url: 'http://gtd.api/'
 });
 
+// app.config("$locationProvider", function($locationProvider) {
+//     $locationProvider.html5Mode(true);
+// });
+
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     $urlRouterProvider.otherwise("/login");
     $stateProvider.state('app', {
-            url: '/app',
+            url: '',
             templateUrl: 'views/main.html'
         })
         .state('app.404', {
@@ -64,21 +68,29 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             url: '/logout',
             controller: 'LogoutController'
         });
+
+    $urlRouterProvider.otherwise('/projeto/listagem');
+    //$locationProvider.html5Mode(true);
 });
 
-app.run(function($rootScope, $location, $cookies, DTDefaultOptions) {
+app.run(function($rootScope, $location, $cookies, DTDefaultOptions, MenuService) {
     // Tradução Datables
     DTDefaultOptions.setLanguageSource('http://cdn.datatables.net/plug-ins/1.10.11/i18n/Portuguese-Brasil.json');
 
     $rootScope.location = $location;
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-
-        if (toState.url != '/login' && ($cookies.get('token') == undefined || $cookies.get('token') == null) ) {
+        if (toState.url != '/login' && ($cookies.get('token') == undefined || $cookies.get('token') == null)) {
             event.preventDefault();
 
             $rootScope.$evalAsync(function() {
-               $location.path("/login");
-           });
+                $location.path("/login");
+            });
+        }
+    });
+
+    $rootScope.$on('$stateChangeError', function(e, toState, toParams, fromState, fromParams, error) {
+        if (error === "Not Authorized") {
+            $state.go("/login");
         }
     });
 });

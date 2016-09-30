@@ -19,7 +19,7 @@
                     <td>{{ ::u.nome }}</td>
                     <td>{{ ::u.nome }}</td>
                     <td>
-                        <a href="#/app/usuario/cadastro/{{ ::u.id }}" class="btn btn-link">Alterar</a>
+                        <a  ui-sref='app.usuario-form({id: u.id})' class="btn btn-link">Alterar</a>
                     </td>
                 </tr>
             </tbody>

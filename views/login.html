@@ -1,20 +1,32 @@
 <br/>
+<br/>
+<br/>
 <div class="container">
     <div class="row">
         <div class="col-sm-4">&nbsp;</div>
+        <div class="col-sm-4 text-center">
+            <h2 class="text-uppercase">Angular 1 Skeleton</h2>
+        </div>
+        <div class="col-sm-4">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">&nbsp;</div>
         <div class="col-sm-4 well">
-            <form>
+            <form name="formulario">
                 <fieldset>
                     <legend>Login</legend>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" ng-model="email" class='form-control'>
+                    <div class="form-group" ng-class="{ 'has-error': formulario.email.$invalid && !formulario.email.$pristine }">
+                        <label class="control-label">Email</label>
+                        <input type="email" ng-model="email" name="email" class='form-control' ng-required="true">
+                        <i class="help-block" ng-if="formulario.email.$dirty && formulario.email.$error.required">Email é obrigatório</i>
+                        <i class="help-block" ng-if="formulario.email.$dirty && formulario.email.$error.email">Digite um email válido.</i>
                     </div>
-                    <div class="form-group">
-                        <label>Senha</label>
-                        <input type="password" ng-model="senha" class='form-control'>
+                    <div class="form-group" ng-class="{ 'has-error': formulario.senha.$invalid && !formulario.senha.$pristine }">
+                        <label class="control-label">Senha</label>
+                        <input type="password" ng-model="senha" name="senha" class='form-control' ng-required="true">
+                        <i class="help-block" ng-if="formulario.senha.$dirty && formulario.senha.$error.required">Senha é obrigatória</i>
                     </div>
-                    <input type="submit" value="Entrar" class="btn btn-primary" ng-click="login(email, senha)">
+                    <input type="submit" value="Entrar" class="btn btn-primary" ng-click="login(email, senha)" ng-disabled="formulario.$invalid">
                 </fieldset>
             </form>
         </div>

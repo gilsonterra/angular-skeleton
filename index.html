@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <title>Angular</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="node_modules/bootswatch/simplex/bootstrap.min.css" media="all" charset="utf-8">
-    <link rel="stylesheet" href="node_modules/bootswatch/simplex/bootstrap.min.css" media="all" charset="utf-8">
+    <link rel="stylesheet" href="node_modules/bootswatch/cosmo/bootstrap.min.css" media="all" charset="utf-8">
     <link rel="stylesheet" href="node_modules/datatables.net-bs/css/dataTables.bootstrap.css" media="all" charset="utf-8">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" media="all" charset="utf-8">
     <link rel="stylesheet" href="node_modules/sweetalert/dist/sweetalert.css" media="all" charset="utf-8">
@@ -16,58 +15,56 @@
 <body ng-app="app" style="background-color: #eee">
     <div ui-view></div>
 
+    <!--  Node Modules -->
     <script src="node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
     <script src="node_modules/angular/angular.min.js"></script>
-
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
-
     <script src="node_modules/tinymce/tinymce.min.js" charset="utf-8"></script>
     <script src="node_modules/angular-ui-tinymce/src/tinymce.js" charset="utf-8"></script>
-
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
-
     <script src="node_modules/datatables.net/js/jquery.dataTables.js" charset="utf-8"></script>
     <script src="node_modules/datatables.net-bs/js/dataTables.bootstrap.js" charset="utf-8"></script>
     <script src="node_modules/angular-datatables/dist/angular-datatables.min.js" charset="utf-8"></script>
-
     <script src="node_modules/datatables.net/js/jquery.dataTables.js" charset="utf-8"></script>
     <script src="node_modules/datatables.net-bs/js/dataTables.bootstrap.js" charset="utf-8"></script>
-
     <script src="node_modules/sweetalert/dist/sweetalert.min.js" charset="utf-8"></script>
-
     <script src="node_modules/jquery-mask-plugin/dist/jquery.mask.min.js" charset="utf-8"></script>
 
     <script src="js/app.js" charset="utf-8"></script>
 
+    <!-- Directives -->
     <script src="js/directives/navigationDirective.js" charset="utf-8"></script>
     <script src="js/directives/maskDirective.js" charset="utf-8"></script>
 
+    <!-- Configs -->
     <script src="js/configs/routeConfig.js" charset="utf-8"></script>
     <script src="js/configs/interceptorsConfig.js" charset="utf-8"></script>
 
+    <!-- Interceptors -->
     <script src="js/controllers/loginController.js" charset="utf-8"></script>
     <script src="js/controllers/logoutController.js" charset="utf-8"></script>
-
     <script src="js/controllers/projeto/list.js" charset="utf-8"></script>
     <script src="js/controllers/projeto/form.js" charset="utf-8"></script>
-
     <script src="js/controllers/tarefa/list.js" charset="utf-8"></script>
     <script src="js/controllers/tarefa/form.js" charset="utf-8"></script>
-
     <script src="js/controllers/usuario/list.js" charset="utf-8"></script>
     <script src="js/controllers/usuario/form.js" charset="utf-8"></script>
 
+    <!-- Interceptors -->
     <script src="js/interceptors/timestampInterceptor.js" charset="utf-8"></script>
     <script src="js/interceptors/loadingInterceptor.js" charset="utf-8"></script>
     <script src="js/interceptors/errorInterceptor.js" charset="utf-8"></script>
 
+    <!-- Service -->
     <script src="js/services/projetoService.js" charset="utf-8"></script>
     <script src="js/services/tarefaService.js" charset="utf-8"></script>
     <script src="js/services/usuarioService.js" charset="utf-8"></script>
+    <script src="js/services/menuService.js" charset="utf-8"></script>
+    <script src="js/services/permissaoService.js" charset="utf-8"></script>
 </body>
 
 </html>

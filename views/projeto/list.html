@@ -26,7 +26,7 @@
                         <p ng-bind-html="::p.descricao"></p>
                     </td>
                     <td>
-                        <a href="#/app/projeto/cadastro/{{ ::p.id }}" class="btn btn-link">Alterar</a>
+                        <a ui-sref='app.projeto-form({id: p.id})' class="btn btn-link">Alterar</a>
                     </td>
                 </tr>
             </tbody>

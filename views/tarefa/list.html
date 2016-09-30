@@ -19,7 +19,7 @@
                     <td>{{ ::t.projeto.nome }}</td>
                     <td>{{ ::t.descricao }}</td>
                     <td>
-                        <a href="#/app/tarefa/cadastro/{{ ::t.projeto_id }}" class="btn btn-link">Alterar</a>
+                        <a ui-sref='app.tarefa-form({id: t.projeto_id})' class="btn btn-link">Alterar</a>
                     </td>
                 </tr>
             </tbody>
