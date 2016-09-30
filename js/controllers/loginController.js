@@ -18,7 +18,7 @@ app.controller("LoginController", function($scope, $cookies, $state, $location, 
                 $cookies.put("usuario", JSON.stringify(json));
 
                 PermissaoService.fetch({grupo_id: json.grupo_id}).success(function(json){
-                    $cookies.put("permissao", json);
+                    $cookies.put("permissoes", JSON.stringify(json));
                 });
 
                 $state.go('app.projeto-list');

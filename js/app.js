@@ -79,12 +79,31 @@ app.run(function($rootScope, $location, $cookies, DTDefaultOptions, MenuService)
 
     $rootScope.location = $location;
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-        if (toState.url != '/login' && ($cookies.get('token') == undefined || $cookies.get('token') == null)) {
+        var permissoes = '';
+
+        if ($cookies.get('permissoes') !== undefined) {
+            permissoes = JSON.parse($cookies.get('permissoes'));
+        }
+
+        if (toState.url != '/login' && (permissoes == undefined || permissoes == null)) {
             event.preventDefault();
 
             $rootScope.$evalAsync(function() {
                 $location.path("/login");
             });
+        }
+
+        if (toState.url != '/login' && toState.url != '/logout' && permissoes.length > 0) {
+            var temPermissao = permissoes.filter(function(obj) {
+                return obj.state === toState.name;
+            });
+
+            if (temPermissao.length <= 0) {
+                event.preventDefault();
+                $rootScope.$evalAsync(function() {
+                    $location.path("/login");
+                });
+            }
         }
     });
 
