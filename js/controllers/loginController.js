@@ -1,4 +1,4 @@
-app.controller("LoginController", function($scope, $cookies, $state, $location, UsuarioService, PermissaoService) {
+app.controller("LoginController", function($scope, $cookies, $state, $location, UsuarioService) {
     $scope.usuario = '';
     $scope.btnLoginText = 'Entrar';
     $scope.btnLoginEnable = true;
@@ -15,7 +15,7 @@ app.controller("LoginController", function($scope, $cookies, $state, $location, 
                     $scope.invalidLogin = true;
                     $scope.btnLoginText = 'Entrar';
                     $scope.btnLoginEnable = true;
-                    
+
                 } else {
                     $cookies.put("token", (new Date().getTime()).toString(36));
                     $cookies.put("email", email);
