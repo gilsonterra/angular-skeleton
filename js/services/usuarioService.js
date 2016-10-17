@@ -4,22 +4,30 @@ app.service("UsuarioService", function($http, API) {
     var _fetch = function() {
         return $http({
             method: 'GET',
-            url: _baseUrl + "search"
-        });
-    };
-
-    var _save = function(contato) {
-        return $http({
-            method: 'POST',
-            url: _baseUrl + "save",
-            data: contato
+            url: _baseUrl + "fetch"
         });
     };
 
     var _find = function(id) {
         return $http({
             method: 'GET',
-            url: _baseUrl + "search/" + id
+            url: _baseUrl + "find/" + id
+        });
+    };
+
+    var _add = function(data) {
+        return $http({
+            method: 'POST',
+            url: _baseUrl + "add",
+            data: data
+        });
+    };
+
+    var _edit = function(id, data) {
+        return $http({
+            method: 'PUT',
+            url: _baseUrl + "edit/" + id,
+            data: data
         });
     };
 
@@ -36,8 +44,9 @@ app.service("UsuarioService", function($http, API) {
 
     return {
         fetch: _fetch,
-        save: _save,
         find: _find,
+        add: _add,
+        edit: _edit,
         authentication: _authentication
     };
 });

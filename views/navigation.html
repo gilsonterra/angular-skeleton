@@ -11,7 +11,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ng-repeat="m in menu">
+                <li ng-repeat="m in menuLeft">
                     <a href="javascript:void(0);" ui-sref="{{ m.state }}">{{ m.nome }}</a>
                 </li>
                 <li>
@@ -29,14 +29,8 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a ui-sref='app.usuario-form'>Usuário</a>
-                            </li>
-                            <li>
-                                <a ui-sref='app.projeto-form'>Projeto</a>
-                            </li>
-                            <li>
-                                <a ui-sref='app.tarefa-form'>Tarefa</a>
+                            <li ng-repeat="m in menuRight">
+                                <a href="javascript:void(0);" ui-sref="{{ m.state }}">{{ m.nome }}</a>
                             </li>
                         </ul>
                     </div>

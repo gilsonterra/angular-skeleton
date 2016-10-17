@@ -12,6 +12,7 @@
                     <th>Nome</th>
                     <th>Faturar</th>
                     <th>Descrição</th>
+                    <th style="width: 50px;">Tarefas</th>
                     <th style="width: 50px;"></th>
                 </tr>
             </thead>
@@ -24,6 +25,9 @@
                     </td>
                     <td>
                         <p ng-bind-html="::p.descricao"></p>
+                    </td>
+                    <td class="text-center">
+                        <b>{{ ::p.tarefas.length }}</b>
                     </td>
                     <td>
                         <a ui-sref='app.projeto-form({id: p.id})' class="btn btn-link">Alterar</a>

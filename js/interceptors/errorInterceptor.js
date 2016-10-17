@@ -1,11 +1,13 @@
-app.factory("errorInterceptor", function($q, $location) {
+app.factory("errorInterceptor", function($q, $location, $window) {
     return {
         responseError: function(rejection) {
-            $location.path("#/error/404");
-            if (rejection.status === 404) {
-                //$state.go('app.404');
-
-            }
+            console.error(rejection);
+            //$location.path("#/erro/404");
+            //$window.location.href = "#/erro/500";
+            // if (rejection.status === 404) {
+            //     //$state.go('app.404');
+            //
+            // }
             return $q.reject(rejection);
         }
     };

@@ -6,8 +6,11 @@
                     <a ui-sref='app.usuario-list' class="btn btn-default btn-sm">
                         Voltar
                     </a>
-                    <button class="btn btn-primary btn-sm" ng-disabled="formulario.$invalid" ng-click="salvar(usuario)" >
+                    <button ng-if="!id" class="btn btn-primary btn-sm" ng-disabled="formulario.$invalid" ng-click="add(usuario)" >
                         Salvar
+                    </button>
+                    <button ng-if="id" class="btn btn-primary btn-sm" ng-disabled="formulario.$invalid" ng-click="edit(usuario)" >
+                        Alterar
                     </button>
                 </small>
                 Cadastro de Usuário
@@ -18,7 +21,6 @@
                 <div class="col-sm-8">
                     <div class="form-group" ng-class="{ 'has-error': formulario.nome.$invalid && !formulario.nome.$pristine }">
                         <label class="control-label" for="nome">Nome*</label>
-                        <input type="hidden" name="id" ng-model="usuario.id">
                         <input type="text" name="nome" ng-model="usuario.nome" class="form-control" maxlength="100" ng-required="true" />
                         <i class="help-block" ng-if="formulario.nome.$dirty && formulario.nome.$error.required">Nome é obrigatório.</i>
                     </div>
