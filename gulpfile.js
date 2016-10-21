@@ -15,14 +15,27 @@ gulp.task('clean', function() {
 
 gulp.task('scripts', function() {
     return es.merge([
-        gulp.src(['bower_components/jquery/dist/jquery.min.js',
-            'bower_components/Materialize/dist/js/materialize.min.js',
-            'bower_components/angular/angular.min.js',
-            'bower_components/angular-cookies/angular-cookies.min.js',
-            'bower_components/angular-route/angular-route.min.js',
-            'bower_components/ngGTColorPicker/ng-gt-colorpicker.js'
+        gulp.src([
+            'node_modules/jquery/dist/jquery.min.js',
+            'node_modules/angular/angular.min.js',
+            'node_modules/bootstrap/dist/js/bootstrap.min.js',
+            'node_modules/angular-ui-tinymce/src/tinymce.js',
+            'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+            'node_modules/angular-cookies/angular-cookies.min.js',
+            'node_modules/angular-aria/angular-aria.min.js',
+            'node_modules/angular-animate/angular-animate.min.js',
+            'node_modules/angular-sanitize/angular-sanitize.min.js',
+            'node_modules/datatables.net/js/jquery.dataTables.js',
+            'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
+            'node_modules/angular-datatables/dist/angular-datatables.min.js',
+            'node_modules/datatables.net/js/jquery.dataTables.js',
+            'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
+            'node_modules/sweetalert/dist/sweetalert.min.js',
+            'node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
+            'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+            'node_modules/angular-local-storage/dist/angular-local-storage.min.js',
         ]),
-        gulp.src(['js/**/*.js']).pipe(concat('scripts.js')).pipe(uglify({
+        gulp.src(['js/**/*']).pipe(concat('scripts.js')).pipe(uglify({
             mangle: false
         }))
     ]).pipe(concat('all.min.js'))
@@ -31,18 +44,25 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('htmlmin', function() {
-    return gulp.src(['views/*.html'])
-        .pipe(htmlmin({
-            collapseWhitespace: true
-        }))
-        .pipe(gulp.dest('dist/views'));
+    return es.merge([
+                gulp.src(['views/*.html']),
+                gulp.src(['views/**/*.html'])
+            ])
+            .pipe(htmlmin({
+                collapseWhitespace: true
+            }))
+            .pipe(gulp.dest('dist/views'));
 });
 
 gulp.task('cssmin', function() {
     return es.merge([
             gulp.src([
-                'bower_components/Materialize/dist/css/materialize.min.css',
-                'bower_components/ngGTColorPicker/ng-gt-colorpicker.css',
+                'node_modules/bootswatch/cosmo/bootstrap.min.css',
+                'node_modules/datatables.net-bs/css/dataTables.bootstrap.css',
+                'node_modules/font-awesome/css/font-awesome.min.css',
+                'node_modules/sweetalert/dist/sweetalert.css',
+                'node_modules/select2/dist/css/select2.min.css',
+                'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css'
             ]),
             gulp.src(['css/*.css']).pipe(cleanCSS())
         ])
@@ -52,8 +72,13 @@ gulp.task('cssmin', function() {
 });
 
 gulp.task('fonts', function() {
-    return gulp.src('bower_components/Materialize/dist/fonts/**')
-        .pipe(gulp.dest('dist/fonts'));
+    return es.merge([
+                gulp.src([
+                    'node_modules/font-awesome/fonts/**',
+                    'node_modules/bootstrap/fonts/**',
+                ]),
+            ])
+            .pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('copy', function() {
